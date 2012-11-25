@@ -28,9 +28,16 @@ div.todo h2 {
 	color: #c00;
 }
 
+#task, .task-edit {
+	font-size: 1.2em;
+}
+
 #task {
 	width: 33em;
-	font-size: 1.2em;
+}
+
+.task-edit {
+	width: 31em;
 }
 
 #task-list {
