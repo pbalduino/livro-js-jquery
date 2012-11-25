@@ -1,0 +1,78 @@
+/*
+	Paleta de cores:
+	#ffffff
+	#cc0000
+	#333333
+*/
+html {
+	font: 100%;
+	font-family: helvetica, colibri, tahoma, sans-serif;
+	color: #333;
+	background-image: url("../images/brillant.png");
+	background-position: initial initial;
+	background-repeat: initial initial;
+	text-shadow: 0.1em 0.1em 0.1em #eee;
+}
+
+div.todo {
+	width: 40em;
+	border: 1px solid #eee;
+	margin: 0 auto;
+	padding: 1em;
+	padding-top: 0;
+	box-shadow: 0.5em 0.5em 0.5em #eee;
+	background-color: white;
+}
+
+div.todo h2 {
+	color: #c00;
+}
+
+#task {
+	width: 33em;
+	font-size: 1.2em;
+}
+
+#task-list {
+	width: 40em;
+	margin-top: 1em;
+}
+
+.task-item {
+	padding: 1em;
+	vertical-align: middle;
+}
+
+.task-item:hover {
+	background-color: #eee;
+}
+
+.task-text {
+	display: block;
+	float: left;
+}
+
+.clear {
+	clear: both;
+}
+
+.task-delete {
+	width: 16px;
+	height: 16px;
+
+	background-image: url("../images/delete.gif");
+	background-repeat: no-repeat;
+	
+	display: block;
+	float: right;
+
+	visibility: hidden;
+}
+
+.task-item:hover .task-delete {
+	visibility: visible;
+}
+
+.task-item, .task-text, .task-delete {
+	/* border: 1px solid black; */
+}
