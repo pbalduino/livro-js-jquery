@@ -1,0 +1,102 @@
+/* palette scheme: http://colorschemedesigner.com/#0032dllpBw0w0 */
+@font-face {
+	font-family: JudasPriest;
+	src: url('../fonts/JudasPriest.ttf');
+}
+
+body {
+	font-family: Helvetica, Tahoma, sans-serif;
+	color: #113157; /* #333344; */
+	font-size: 100%; /* 100% = 16px */
+	text-shadow: 0.1em 0.1em 0.1em #ddf;
+	line-height: 1.5em;
+}
+
+#header-container {
+	width: 100%;
+}
+
+#header, #content {
+	width: 1140px;
+	margin: 0 auto;
+}
+
+#header {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+h2 {
+	color: #851616;
+	margin-bottom: 0;
+}
+
+table#cart {
+	width: 100%;
+}
+
+table#cart th {
+	text-align: left;
+	font-size: 0.8em;
+}
+
+th, td {
+	padding: 0.5em;
+	border-bottom: #ccd 1px dotted;
+}
+
+th.small, tr.item td.small {
+	width: 8em;
+}
+
+div.price, #total {
+	font-size: 1em;
+	color: #cc4444;
+}
+
+#total {
+	font-size: 1.25em;
+}
+
+tr.item {
+	vertical-align: top;
+	font-size: 100%;
+	padding-top: 1em;
+}
+
+a.product-link {
+	text-decoration: none;
+	color: #345986;
+	font-size: 1.25em;
+}
+
+a.author-link {
+	text-decoration: none;
+	color: #113157;	
+}
+
+a.delete-link {
+	font-size: 0.8em;
+}
+
+img.cover {
+	height: 7.5em;  /* 120/16 = 7.5 */
+}
+
+td.image {
+	width: 8.125em; /* 130/16 = 8.125; */
+}
+
+.in-stock {
+	color: #768216;
+}
+
+tr.footer {
+	text-align: right;
+}
+
+.logo {
+	font-family: JudasPriest;
+	font-size: 3em;
+	color: #113157;
+}
