@@ -2,17 +2,24 @@ $(function(){
 	var $lastClicked;
 
 	function onTaskDeleteClick() {
-		$(this).parent('.task-item').hide('slow');
+		$(this).parent('.task-item')
+			.unbind('click')
+			.hide('slow')
+			.remove();
 	}
 
 	function addTask(text) {
-		var task = "<div class='task-item'>" + 
-								"<div class='task-text'>" + text + "</div>" +
-								"<div class='task-delete'>.</div>" +
-								"<div class='clear'></div>" +
-								"</div>";
+		var $task = $("<div />")
+									.addClass("task-item")
+									.append($("<div />")
+													.addClass("task-text")
+													.text(text))
+									.append($("<div />")
+													.addClass("task-delete"))
+									.append($("<div />")
+													.addClass("clear"));
 
-		$("#task-list").append(task);
+		$("#task-list").append($task);
 
 		$(".task-delete").click(onTaskDeleteClick);
 
@@ -61,6 +68,8 @@ $(function(){
 	}
 
 	$(".task-delete").click(onTaskDeleteClick);
+
+	$(".task-item").click(onTaskItemClick);
 
 	$("#task").keydown(onTaskKeydown);
 });
