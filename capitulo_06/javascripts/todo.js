@@ -1,46 +1,47 @@
 $(function(){
 	var $lastClicked;
 
-	function onTaskDeleteClick() {
-		$(this).parent('.task-item')
+	function onTarefaDeleteClick() {
+		$(this).parent('.tarefa-item')
 			.unbind('click')
-			.hide('slow')
-			.remove();
+			.hide('slow', function() {
+				$(this).remove();
+			});
 	}
 
-	function addTask(text) {
-		var $task = $("<div />")
-									.addClass("task-item")
+	function addTarefa(text) {
+		var $tarefa = $("<div />")
+									.addClass("tarefa-item")
 									.append($("<div />")
-													.addClass("task-text")
+													.addClass("tarefa-text")
 													.text(text))
 									.append($("<div />")
-													.addClass("task-delete"))
+													.addClass("tarefa-delete"))
 									.append($("<div />")
 													.addClass("clear"));
 
-		$("#task-list").append($task);
+		$("#tarefa-list").append($tarefa);
 
-		$(".task-delete").click(onTaskDeleteClick);
+		$(".tarefa-delete").click(onTarefaDeleteClick);
 
-		$(".task-item").click(onTaskItemClick);
+		$(".tarefa-item").click(onTarefaItemClick);
 	}
 
-	function onTaskKeydown(event) {
-		if(event.keyCode == 13) {
-			addTask($("#task").val());
-			$("#task").val("");
+	function onTarefaKeydown(event) {
+		if(event.which === 13) {
+			addTarefa($("#tarefa").val());
+			$("#tarefa").val("");
 		}
 	}
 
-	function onTaskEditKeydown(event) {
-		if(event.keyCode === 13) {
+	function onTarefaEditKeydown(event) {
+		if(event.which === 13) {
 			savePendingEdition($lastClicked);
 			$lastClicked = undefined;
 		}
 	}
 
-	function onTaskItemClick(){
+	function onTarefaItemClick(){
 		if(!$(this).is($lastClicked)) {
 			if($lastClicked !== undefined) {
 				savePendingEdition($lastClicked);
@@ -48,28 +49,28 @@ $(function(){
 
 			$lastClicked = $(this);
 
-			var text = $lastClicked.children('.task-text').text();
+			var text = $lastClicked.children('.tarefa-text').text();
 
-			var content = "<input type='text' class='task-edit' value='" + 
+			var content = "<input type='text' class='tarefa-edit' value='" + 
 				text + "'>";
 
 			$lastClicked.html(content);
 
-			$(".task-edit").keydown(onTaskEditKeydown);
+			$(".tarefa-edit").keydown(onTarefaEditKeydown);
 		}
 	}
 
-	function savePendingEdition($task) {
-		var text = $task.children('.task-edit').val();
-		$task.empty();
-		$task.append("<div class='task-text'>" + text + "</div>")
-					.append("<div class='task-delete'>.</div>")
+	function savePendingEdition($tarefa) {
+		var text = $tarefa.children('.tarefa-edit').val();
+		$tarefa.empty();
+		$tarefa.append("<div class='tarefa-text'>" + text + "</div>")
+					.append("<div class='tarefa-delete'>.</div>")
 					.append("<div class='clear'></div>");
 	}
 
-	$(".task-delete").click(onTaskDeleteClick);
+	$(".tarefa-delete").click(onTarefaDeleteClick);
 
-	$(".task-item").click(onTaskItemClick);
+	$(".tarefa-item").click(onTarefaItemClick);
 
-	$("#task").keydown(onTaskKeydown);
+	$("#tarefa").keydown(onTarefaKeydown);
 });

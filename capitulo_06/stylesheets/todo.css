@@ -28,33 +28,33 @@ div.todo h2 {
 	color: #c00;
 }
 
-#task, .task-edit {
+#tarefa, .tarefa-edit {
 	font-size: 1.2em;
 }
 
-#task {
+#tarefa {
 	width: 33em;
 }
 
-.task-edit {
+.tarefa-edit {
 	width: 31em;
 }
 
-#task-list {
+#tarefa-list {
 	width: 40em;
 	margin-top: 1em;
 }
 
-.task-item {
+.tarefa-item {
 	padding: 1em;
 	vertical-align: middle;
 }
 
-.task-item:hover {
+.tarefa-item:hover {
 	background-color: #eee;
 }
 
-.task-text {
+.tarefa-text {
 	display: block;
 	float: left;
 }
@@ -63,7 +63,7 @@ div.todo h2 {
 	clear: both;
 }
 
-.task-delete {
+.tarefa-delete {
 	width: 16px;
 	height: 16px;
 
@@ -76,10 +76,10 @@ div.todo h2 {
 	visibility: hidden;
 }
 
-.task-item:hover .task-delete {
+.tarefa-item:hover .tarefa-delete {
 	visibility: visible;
 }
 
-.task-item, .task-text, .task-delete {
+.tarefa-item, .tarefa-text, .tarefa-delete {
 	/* border: 1px solid black; */
 }
