@@ -1,76 +1,83 @@
 $(function(){
-	var $lastClicked;
+  var $lastClicked;
 
-	function onTarefaDeleteClick() {
-		$(this).parent('.tarefa-item')
-			.unbind('click')
-			.hide('slow', function() {
-				$(this).remove();
-			});
-	}
+  function onTarefaDeleteClick() {
 
-	function addTarefa(text) {
-		var $tarefa = $("<div />")
-									.addClass("tarefa-item")
-									.append($("<div />")
-													.addClass("tarefa-text")
-													.text(text))
-									.append($("<div />")
-													.addClass("tarefa-delete"))
-									.append($("<div />")
-													.addClass("clear"));
+    $(this).parent('.tarefa-item')
+      .unbind('click')
+      .hide('slow', function() {
+        $(this).remove();
+      });
+  }
 
-		$("#tarefa-list").append($tarefa);
+  function addTarefa(text) {
+    var $tarefa = $("<div />")
+                  .addClass("tarefa-item")
+                  .append($("<div />")
+                          .addClass("tarefa-text")
+                          .text(text))
+                  .append($("<div />")
+                          .addClass("tarefa-delete"))
+                  .append($("<div />")
+                          .addClass("clear"));
 
-		$(".tarefa-delete").click(onTarefaDeleteClick);
+    $("#tarefa-list").append($tarefa);
 
-		$(".tarefa-item").click(onTarefaItemClick);
-	}
+    $(".tarefa-delete").click(onTarefaDeleteClick);
 
-	function onTarefaKeydown(event) {
-		if(event.which === 13) {
-			addTarefa($("#tarefa").val());
-			$("#tarefa").val("");
-		}
-	}
+    $(".tarefa-item").click(onTarefaItemClick);
+  }
 
-	function onTarefaEditKeydown(event) {
-		if(event.which === 13) {
-			savePendingEdition($lastClicked);
-			$lastClicked = undefined;
-		}
-	}
+  function onTarefaKeydown(event) {
+    if(event.which === 13) {
+      addTarefa($("#tarefa").val());
+      $("#tarefa").val("");
+    }
+  }
 
-	function onTarefaItemClick(){
-		if(!$(this).is($lastClicked)) {
-			if($lastClicked !== undefined) {
-				savePendingEdition($lastClicked);
-			}
+  function onTarefaEditKeydown(event) {
+    if(event.which === 13) {
+      savePendingEdition($lastClicked);
+      $lastClicked = undefined;
+    }
+  }
 
-			$lastClicked = $(this);
+  function onTarefaItemClick(){
 
-			var text = $lastClicked.children('.tarefa-text').text();
+    if(!$(this).is($lastClicked)) {
+      if($lastClicked !== undefined) {
+        savePendingEdition($lastClicked);
+      }
 
-			var content = "<input type='text' class='tarefa-edit' value='" + 
-				text + "'>";
+      $lastClicked = $(this);
 
-			$lastClicked.html(content);
+      var text = $lastClicked.children('.tarefa-text').text();
 
-			$(".tarefa-edit").keydown(onTarefaEditKeydown);
-		}
-	}
+      var content = "<input type='text' class='tarefa-edit' value='" + 
+        text + "'>";
 
-	function savePendingEdition($tarefa) {
-		var text = $tarefa.children('.tarefa-edit').val();
-		$tarefa.empty();
-		$tarefa.append("<div class='tarefa-text'>" + text + "</div>")
-					.append("<div class='tarefa-delete'>.</div>")
-					.append("<div class='clear'></div>");
-	}
+      $lastClicked.html(content);
 
-	$(".tarefa-delete").click(onTarefaDeleteClick);
+      $(".tarefa-edit").keydown(onTarefaEditKeydown);
+    }
+  
+  }
 
-	$(".tarefa-item").click(onTarefaItemClick);
+  function savePendingEdition($tarefa) {
+    var text = $tarefa.children('.tarefa-edit').val();
+    $tarefa.empty();
+    $tarefa.append("<div class='tarefa-text'>" + text + "</div>")
+          .append("<div class='tarefa-delete'></div>")
+          .append("<div class='clear'></div>");
 
-	$("#tarefa").keydown(onTarefaKeydown);
+    $(".tarefa-delete").click(onTarefaDeleteClick);
+
+    $tarefa.click(onTarefaItemClick);
+  }
+
+  $(".tarefa-delete").click(onTarefaDeleteClick);
+
+  $(".tarefa-item").click(onTarefaItemClick);
+
+  $("#tarefa").keydown(onTarefaKeydown);
 });

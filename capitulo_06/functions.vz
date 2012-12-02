@@ -1,0 +1,22 @@
+digraph "functions" {
+
+	graph [	center = false,
+		label = "\n\nOrdem de explicação das funções:\n\nonTarefaDeleteClick\nonTarefaEditKeyDown\nsavePendingEdition\nonTarefaItemClick\nonTarefaKeyDown\naddTarefa",
+		size = "6,6" ];
+
+	onTarefaDeleteClick;
+
+	addTarefa -> onTarefaDeleteClick;
+
+	addTarefa -> onTarefaItemClick
+
+	onTarefaKeyDown -> addTarefa;
+
+	onTarefaEditKeyDown -> savePendingEdition;
+
+	onTarefaItemClick -> savePendingEdition;
+
+	onTarefaItemClick -> onTarefaEditKeyDown;
+
+	savePendingEdition;
+}
