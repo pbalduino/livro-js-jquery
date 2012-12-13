@@ -20,26 +20,26 @@ function writeTotal(value) {
 }
 
 function calculateTotalProducts() {
-	var items = document.getElementsByClassName("item");
+	var produtos = document.getElementsByClassName("produto");
 
-	var totalProducts = 0;
+	var totalProdutos = 0;
 
-	for(var pos = 0; pos < items.length; pos++) {
-		var priceElements = items[pos].getElementsByClassName("price");
+	for(var pos = 0; pos < produtos.length; pos++) {
+		var priceElements = produtos[pos].getElementsByClassName("price");
 		var priceText = priceElements[0].innerHTML;
 		var price = moneyTextToFloat(priceText);
 
-		var qtyElements = items[pos].getElementsByClassName("quantity");
+		var qtyElements = produtos[pos].getElementsByClassName("quantity");
 		var qtyText = qtyElements[0].value;
 		var quantity = moneyTextToFloat(qtyText);
 
-		var totalItem = quantity * price;
+		var subtotal = quantity * price;
 
-		totalProducts += totalItem;
+		totalProdutos += subtotal;
 
 	}
 
-	return totalProducts;
+	return totalProdutos;
 }
 
 function onQuantityChange() {
