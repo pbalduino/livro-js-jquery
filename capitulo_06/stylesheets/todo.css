@@ -54,7 +54,7 @@ div.todo h2 {
 	background-color: #eee;
 }
 
-.tarefa-text {
+.tarefa-texto {
 	display: block;
 	float: left;
 }
@@ -80,6 +80,6 @@ div.todo h2 {
 	visibility: visible;
 }
 
-.tarefa-item, .tarefa-text, .tarefa-delete {
+.tarefa-item, .tarefa-texto, .tarefa-delete {
 	/* border: 1px solid black; */
 }
