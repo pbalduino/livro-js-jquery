@@ -55,7 +55,6 @@ $(function(){
   }
 
   function onTarefaItemClick(){
-
     if(!$(this).is($lastClicked)) {
       if($lastClicked !== undefined) {
         savePendingEdition($lastClicked);
@@ -64,40 +63,45 @@ $(function(){
       $lastClicked = $(this);
 
       var text = $lastClicked.children('.tarefa-text').text();
+      var id = $lastClicked.children('.tarefa-id').text();
 
-      var content = "<input type='text' class='tarefa-edit' value='" + 
+      var content = "<div class='tarefa-id'>" + id + "</div>" +
+        "<input type='text' class='tarefa-edit' value='" + 
         text + "'>";
 
       $lastClicked.html(content);
 
       $(".tarefa-edit").keydown(onTarefaEditKeydown);
     }
-  
   }
 
   function savePendingEdition($tarefa) {
     var text = $tarefa.children('.tarefa-edit').val();
+    var id = $tarefa.children('.tarefa-id').text();
     $tarefa.empty();
-    $tarefa.append("<div class='tarefa-text'>" + text + "</div>")
+    $tarefa.append("<div class='tarefa-id'>" + id + "</div>")
+          .append("<div class='tarefa-text'>" + text + "</div>")
           .append("<div class='tarefa-delete'></div>")
           .append("<div class='clear'></div>");
+
+    updateTarefa(text, id);
 
     $(".tarefa-delete").click(onTarefaDeleteClick);
 
     $tarefa.click(onTarefaItemClick);
   }
 
-function loadTarefas() {
-  $("#tarefa").empty();
+  function loadTarefas() {
+    $("#tarefa").empty();
 
-  $.getJSON(server + "/tarefas", {usuario: meu_login})
-    .done(function(data) {
-      console.log("data: ", data);
-      for(var tarefa = 0; tarefa < data.length; tarefa++) {
-        addTarefa(data[tarefa].texto, data[tarefa].id);
-      }
-    });
-}
+    $.getJSON(server + "/tarefas", {usuario: meu_login})
+      .done(function(data) {
+        console.log("data: ", data);
+        for(var tarefa = 0; tarefa < data.length; tarefa++) {
+          addTarefa(data[tarefa].texto, data[tarefa].id);
+        }
+      });
+  }
     
   $(".tarefa-delete").click(onTarefaDeleteClick);
 
