@@ -14,7 +14,7 @@ $(function(){
     var $tarefa = $("<div />")
                   .addClass("tarefa-item")
                   .append($("<div />")
-                          .addClass("tarefa-text")
+                          .addClass("tarefa-texto")
                           .text(text))
                   .append($("<div />")
                           .addClass("tarefa-delete"))
@@ -51,7 +51,7 @@ $(function(){
 
       $lastClicked = $(this);
 
-      var text = $lastClicked.children('.tarefa-text').text();
+      var text = $lastClicked.children('.tarefa-texto').text();
 
       var content = "<input type='text' class='tarefa-edit' value='" + 
         text + "'>";
@@ -66,7 +66,7 @@ $(function(){
   function savePendingEdition($tarefa) {
     var text = $tarefa.children('.tarefa-edit').val();
     $tarefa.empty();
-    $tarefa.append("<div class='tarefa-text'>" + text + "</div>")
+    $tarefa.append("<div class='tarefa-texto'>" + text + "</div>")
           .append("<div class='tarefa-delete'></div>")
           .append("<div class='clear'></div>");
 
