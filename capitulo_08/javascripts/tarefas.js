@@ -7,11 +7,28 @@ $(function(){
   function updateTarefa(text, id) {
     $.post(server + "/tarefa", {tarefa_id: id, texto: text});
   }
+
+  function newTarefa(text, $div) {
+    $.post(server + "/tarefa", 
+      {usuario: meu_login, 
+       texto: text, 
+       _method: "PUT"})
+     .done(function(data) {
+         $div.text(data.id);
+     });
+  }
     
   function onTarefaDeleteClick() {
     $(this).parent('.tarefa-item')
       .unbind('click')
       .hide('slow', function() {
+        $this = $(this);
+
+        $.post(server + "/tarefa",
+          {usuario: meu_login, 
+            tarefa_id: $this.children(".tarefa-id").text(), 
+            _method: "DELETE"});
+
         $(this).remove();
       });
   }
@@ -37,11 +54,16 @@ $(function(){
     $(".tarefa-delete").click(onTarefaDeleteClick);
 
     $(".tarefa-item").click(onTarefaItemClick);
+
+    if(id === 0) {
+      var div = $($tarefa.children(".tarefa-id"));
+      console.log("id", div);
+      newTarefa(text, $(div));
+    }
   }
 
   function onTarefaKeydown(event) {
     if(event.which === 13) {
-      savePendingEdition($lastClicked);
       addTarefa($("#tarefa").val());
       $("#tarefa").val("");
     }
@@ -96,7 +118,6 @@ $(function(){
 
     $.getJSON(server + "/tarefas", {usuario: meu_login})
       .done(function(data) {
-        console.log("data: ", data);
         for(var tarefa = 0; tarefa < data.length; tarefa++) {
           addTarefa(data[tarefa].texto, data[tarefa].id);
         }
