@@ -1,0 +1,28 @@
+body {
+	font-size: 100%;
+	font-family: Helvetica, Verdana, sans-serif;
+	text-shadow: 0.1em 0.1em #fff;
+	margin: 0;
+	background-color: #eee;
+	color: #333;
+
+}
+
+fieldset {
+	margin: 0 auto;
+	width: 15em;
+}
+
+label {
+	width: 3.5em;
+	display: block;
+	float: left;
+}
+
+input {
+	border: medium 1em #333;
+}
+
+.button {
+	padding: 0.5em 1em;
+}
