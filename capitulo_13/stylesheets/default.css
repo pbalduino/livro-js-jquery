@@ -5,7 +5,6 @@ body {
 	margin: 0;
 	background-color: #eee;
 	color: #333;
-
 }
 
 fieldset {
@@ -19,8 +18,10 @@ label {
 	float: left;
 }
 
-input {
+input[type=text] {
 	border: medium 1em #333;
+  height: 1.5em;
+  border-radius: 0.5em;
 }
 
 .button {

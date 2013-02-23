@@ -1,7 +1,16 @@
+.erro, .valido {
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
 .erro {
   border-color: red;
+  background-color: #fee;
+  background-image: url("../images/fail.png");
 }
 
 .valido {
   border-color: #7fff7f;
+  background-color: #efe;
+  background-image: url("../images/success.png");
 }
