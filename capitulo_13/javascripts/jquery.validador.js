@@ -51,8 +51,7 @@
 
   $.fn.validador = function(options) {
     var init = function() {
-      console.log(options);
-
+      
       var element = $(this);
       var settings = $.extend({
         "function" :  validaCpf

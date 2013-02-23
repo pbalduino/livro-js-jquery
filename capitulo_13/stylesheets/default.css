@@ -1,29 +1,29 @@
 body {
-	font-size: 100%;
-	font-family: Helvetica, Verdana, sans-serif;
-	text-shadow: 0.1em 0.1em #fff;
-	margin: 1em;
-	background-color: #f7f7f7;
-	color: #333;
+  font-size: 100%;
+  font-family: Helvetica, Verdana, sans-serif;
+  text-shadow: 0.1em 0.1em #fff;
+  margin: 1em;
+  background-color: #f7f7f7;
+  color: #333;
 }
 
 fieldset {
-	margin: 0 auto;
-	width: 15em;
+  margin: 0 auto;
+  width: 15em;
 }
 
 label {
-	width: 6em;
-	display: block;
-	float: left;
+  width: 6em;
+  display: block;
+  float: left;
 }
 
 input[type=text] {
-	border: medium 1em #333;
+  border: medium 1em #333;
   height: 1.5em;
   border-radius: 0.5em;
 }
 
 .button {
-	padding: 0.5em 1em;
+  padding: 0.5em 1em;
 }

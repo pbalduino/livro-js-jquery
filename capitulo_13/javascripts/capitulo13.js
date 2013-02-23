@@ -1,5 +1,4 @@
 function obrigatorio(text) {
-  console.log(text, text.trim() !== "");
   return text.trim() !== "";
 }
 
