@@ -54,7 +54,7 @@ $(function(){
       var text = $lastClicked.children('.tarefa-texto').text();
 
       var content = "<input type='text' class='tarefa-edit' value='" + 
-        text + "'>";
+        text + "'/>";
 
       $lastClicked.html(content);
 
