@@ -4,7 +4,7 @@ $(function(){
   function onTarefaDeleteClick() {
 
     $(this).parent('.tarefa-item')
-      .unbind('click')
+      .off('click')
       .hide('slow', function() {
         $(this).remove();
       });
