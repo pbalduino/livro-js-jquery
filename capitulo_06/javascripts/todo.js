@@ -58,6 +58,7 @@ $(function(){
 
       $lastClicked.html(content);
 
+	  $(".tarefa-item").off();
       $(".tarefa-edit").keydown(onTarefaEditKeydown);
     }
   
