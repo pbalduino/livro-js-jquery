@@ -44,7 +44,7 @@ $(function(){
 
   function onTarefaItemClick(){
 
-    if(!$(this).is($lastClicked)) {
+    if($(this).is($lastClicked)) {
       if($lastClicked !== undefined) {
         savePendingEdition($lastClicked);
       }
