@@ -4,7 +4,7 @@ $(function(){
   function onTarefaDeleteClick() {
 
     $(this).parent('.tarefa-item')
-      .unbind('click')
+      .off('click')
       .hide('slow', function() {
         $(this).remove();
       });
@@ -44,7 +44,7 @@ $(function(){
 
   function onTarefaItemClick(){
 
-    if(!$(this).is($lastClicked)) {
+    if($(this).is($lastClicked)) {
       if($lastClicked !== undefined) {
         savePendingEdition($lastClicked);
       }
@@ -54,10 +54,11 @@ $(function(){
       var text = $lastClicked.children('.tarefa-texto').text();
 
       var content = "<input type='text' class='tarefa-edit' value='" + 
-        text + "'>";
+        text + "'/>";
 
       $lastClicked.html(content);
 
+	  $(".tarefa-item").off();
       $(".tarefa-edit").keydown(onTarefaEditKeydown);
     }
   
